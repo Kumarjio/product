@@ -1,6 +1,6 @@
-<?php require_once("../includes/session.php");?>
-<?php require_once("../includes/db_connection.php");?>
-<?php require_once("../includes/functions.php");?>
+<?php require_once("includes/session.php");?>
+<?php require_once("includes/db_connection.php");?>
+<?php require_once("includes/functions.php");?>
 <?php confirm_logged_in(); ?>
 <?php
     $current_user = $_SESSION["username"];
@@ -206,7 +206,7 @@
               <h3 class="box-title">List of Products</h3>
             </div>
             <!-- /.box-header -->
-            <form method="post" action="">
+           
             <div class="box-body">
                     <table id="example2" class="table table-bordered table-hover">
                       <thead>
@@ -221,9 +221,9 @@
                           <?php
                               while ($productList = mysqli_fetch_assoc($result_showProduct)) { ?>
                                   <tr>
-                                    <td><input type="text" name="product" value="<?php echo $productList['product']; ?>"></td>
-                                    <td><input type="text" name="quantity" value="<?php echo $productList['quantity']; ?>"></td>
-                                    <td><input type="text" name="cost" value="<?php echo $productList['cost']; ?>"></td>
+                                    <td><?php echo $productList['product']; ?></td>
+                                    <td><?php echo $productList['quantity']; ?></td>
+                                    <td><?php echo $productList['cost']; ?></td>
                                     <td class="text-center" >
                                       <a href="deleteProduct.php?product_id=<?php echo $productList['id']; ?>&order_id=<?php echo $order_id ?>" onclick="return confirm('Are you sure you want to delete this product?');"><i class="fa fa-close"></i> </a>
                                     </td>
@@ -243,7 +243,7 @@
                 </div>  
               </div>
             </div>
-          </form>
+         
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

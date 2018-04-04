@@ -181,7 +181,7 @@
                 <div class="box box-primary">
                     <!-- form start -->
                     <p class="text-center">
-                        <form role="form" method="post" action="index.php" >
+                        <form role="form" method="post" action="home.php" >
                           <div class="box-body">
                             <div class="form-group col-lg-12">
                               <label for="area">Select Area</label>

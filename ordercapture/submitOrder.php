@@ -1,6 +1,6 @@
-<?php require_once("../includes/session.php");?>
-<?php require_once("../includes/db_connection.php");?>
-<?php require_once("../includes/functions.php");?>
+<?php require_once("includes/session.php");?>
+<?php require_once("includes/db_connection.php");?>
+<?php require_once("includes/functions.php");?>	
 
 <?php
 	$order_id = $_GET['order_id'];
@@ -12,7 +12,7 @@
 	$result = mysqli_query($conn, $query);
 	confirm_query($result);
 	if ($result) {
-		redirect_to("index.php?state=1");
+		redirect_to("home.php?state=1");
 	}
 ?>
 <?php
