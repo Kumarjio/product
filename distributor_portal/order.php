@@ -504,9 +504,10 @@
         Orders
       </h1>
       <td>
-        <div id="confirm_button" style="display:none"> 
-          <button type="button" class="btn btn-primary">Confirm</button>
+        <div id="confirm_button"> 
+          <button  data-toggle="modal" data-target="#allOrder" type="button" class="btn btn-primary">Consolidated List of Orders</button>
         </div>
+      
       <td>
     </section>
 
@@ -860,6 +861,55 @@
 }
 ?>
 </div>
+
+<div class="modal fade" id="allOrder" role="dialog">
+   <div class="modal-dialog">
+   
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <center><h4 class="modal-title">All Order</h4> </center>
+         <?php
+              $query_all_order = "SELECT product , SUM(quantity) AS TotalQuantity FROM add_products GROUP BY product";
+              $result_modalPharma = mysqli_query($conn, $query_all_order);
+              confirm_query($result_modalPharma);
+              
+         ?>
+       </div>
+       <div class="modal-body">
+         <table class="table no-margin">
+                 <thead>
+                 <tr>
+                   <th>Product</th>
+                   <th>Quantity</th>
+                   
+                 </tr>
+                 </thead>
+                 <tbody>
+                <?php
+                     while ($productList = mysqli_fetch_assoc($result_modalPharma)) { ?>
+                                          <tr>
+                     <td><?php echo $productList['product']; ?></td>
+                     <td><?php echo $productList['TotalQuantity']; ?></td>
+                     
+                     </tr>
+                     <?php
+                      }
+                 ?>
+                 
+                 
+                 </tbody>
+               </table>
+       </div>
+       <div class="modal-footer">
+       
+         <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+     
+   </div>
+ </div>
 
 
 
