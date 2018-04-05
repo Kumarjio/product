@@ -27,7 +27,7 @@ ${"MyVar"};
     <div class="panel-heading">Drug Entry</div>
     <div class="panel-body">
         <form method="post" action="insert.php"  >
-                     <input type="text" name="drug_name" class="form-control" placeholder="Drug Name">
+                     <input type="text" name="drug_name" class="form-control" placeholder="Drug Name" required="">
                      <input type="text" name="drug_company" class="form-control" placeholder="Drug Company">
                      <input type="text" name="drug_compositions" class="form-control" placeholder="Drug Compositions">
                      <input type="text" name="drug_price" class="form-control" placeholder="Drug Price">

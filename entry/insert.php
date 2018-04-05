@@ -15,6 +15,11 @@ if ($_POST['save']) {
 	 '".htmlentities(trim(addslashes(strip_tags($drug_used_for))))."','".htmlentities(trim(addslashes(strip_tags($drug_unsafe_with))))."',
 	 '".htmlentities(trim(addslashes(strip_tags($drug_substitute))))."','".htmlentities(trim(addslashes(strip_tags($drug_quantity_by_packing))))."'
 	)");
+	$sql1 = @mysqli_affected_rows($link);
+			if($sql1 == 1)
+				$msg1 = '<i style="color:green">Drug Successfully Saved</i>';
+			else 
+				$msg1 = '<i style="color:red">Drug Unsuccessfully Saved</i>';
 
 
 	$sql = $link->query("select * from `drug` where `drug_name` = '".$drug_name."' order by `drug_id` DESC limit 0,1");
@@ -37,6 +42,11 @@ if ($_POST['save']) {
 			 '".htmlentities(trim(addslashes(strip_tags($dc_how_to_use[$i]))))."','".htmlentities(trim(addslashes(strip_tags($dc_how_drug_work[$i]))))."')");
 			}
 		# code...
+			$sql2 = @mysqli_affected_rows($link);
+			if($sql2 == 1)
+				$msg2 = '<i style="color:green">Drug Composition Successfully Saved</i>';
+			else 
+				$msg2 = '<i style="color:red">Drug Composition Unsuccessfully Saved</i>';
 	}
 
 
@@ -52,19 +62,21 @@ if ($_POST['save']) {
 			 '".htmlentities(trim(addslashes(strip_tags($di_composition[$i]))))."','".htmlentities(trim(addslashes(strip_tags($di_topic[$i]))))."',
 			 '".htmlentities(trim(addslashes(strip_tags($di_content[$i]))))."')");
 			}
-		# code...
+		# code..
+			$sql3 = @mysqli_affected_rows($link);
+			if($sql3 == 1)
+				$msg3 = '<i style="color:green">Drug Info Successfully Saved</i>';
+			else 
+				$msg3 = '<i style="color:red">Drug Info Unsuccessfully Saved</i>';
 	}
 			
-			$sql = @mysqli_affected_rows($link);
-			if($sql == 1)
-				$msg = '<i style="color:green">Successfully Saved</i>';
-			else 
-				$msg = '<i style="color:red">Unsuccessfully Saved</i>';
+			
 }
 
 
-echo $msg;
-
+echo $msg1."<br>";
+echo $msg2."<br>";
+echo $msg3."<br>";
 	
 ?>
 
